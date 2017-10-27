@@ -1,0 +1,9 @@
+---
+# include "included.yml" under the "tasks" directory
+- hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+    - include: tasks/included.yml
+      vars:
+        general_packages: vim-enhanced,wget,unzip

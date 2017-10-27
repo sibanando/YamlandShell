@@ -1,0 +1,11 @@
+# AWS Login credentials
+
+- hosts: localhost
+  tasks:
+   - name: Upload my publickey
+     ec2_key:
+        name: SibaAWSKey 
+        region: us-west-1
+        key_material: 'ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAqPm26MWA1jleRZeiirOFE82BWk5bk+5iBK9iDYpkFcmpAAQdUEWVVAiCaSr4jff5r+2mnp8zbGdfXLJ5FxmDZo2UTGhC9XsuCwyD4oRhviaQYX60LqzdNyz5c8xcpK6A0WuM7EazTGiDyriF57AqCP04if1N8D8QAHfUaHaYJ+8Xzs4dUYHf4g0NcgSiLioGv24JhZX9Ntw4UOvUgNQvLex5KOH9c2HZJWdVxaku9SflfVvTKWDbh42KLZ/oMlZ8OSr+9TmNBMFSRTt0Vcde5ddQqJ7nkxLZkDqzt+sn8oXFt5z6cU+OeL3AewFVNuNTUBoSM53/sjxNtk593sTt2w== root@ansible.xavier.com'
+        state: present
+

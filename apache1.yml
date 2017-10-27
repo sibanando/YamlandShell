@@ -1,0 +1,12 @@
+---
+- hosts: all
+# use priviledge (default : root)
+  become: yes
+# the way to use priviledge
+  become_method: sudo
+# define tasks
+  tasks:
+  - name: httpd is uninstalled
+    yum: name=httpd state=absent
+  - name: httpd is running and 
+    service: name=httpd state=started

@@ -1,0 +1,22 @@
+---
+- hosts: all
+  tasks:
+- name: apply common configuration
+  hosts: all
+  user: root
+  become: yes
+  become_method: su
+  tasks:
+     
+  roles:
+    - common
+
+- name: configure web 
+  hosts: all
+  user: root
+  become: yes
+  become_method: su
+  tasks:
+     
+  roles:
+    - web 
