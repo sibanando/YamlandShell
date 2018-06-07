@@ -1,0 +1,74 @@
+#this task isto update sudo rules -takes backup of existing file
+
+ -name: create tmp sudo file and take backup of actual file
+   shell: cp -p /etc/sudoers /etc/sudoers.bkp && /etc/sudoers /etc/sudoers.tmp
+   tags: create_sudo_rule
+
+
+# this task is to update sudo rules - updates the sudo rule in .tmp file
+ -name: create sudo rules for a user
+  dest=/etc/sudoers.tmp
+  state=present
+  regexp = '^demouser1' line='demouser1 ALL=(ALL) ALL'
+  tags:create_sudo_rule
+ 
+# this task is to update sudo rules . restore .tmp file to original agter validation
+ - name: Final sudoers file check
+   shell:visudo -q -c -f /etc/sudoers.tmp && cp -p /etc/sudoers.tmp /etc/sudoers
+ tags: create_sudo_rule
+# package mangement 
+ -name: install/update a rpm on target systems
+  yum:
+    name={{ item }}
+    state=latest
+  with_items:
+    - vim
+    - ntp
+tags: yum_install_rpm
+# reboot systems(run with proper attention)
+
+- name: restart system
+  command: shutdown -r +1 "rebooting system after paching"
+  async: 0
+  poll: 0
+register: reboot_started
+ignore_errors: true
+tags: reboot_system
+
+# this tsk is to wait for 3 minutes for system to come up after the reboot
+- name: pause for 180 secs
+  pause:
+   minutes=3
+  tags: reboot_system
+# ensure NFS CLIENT is installed,then mount NFS
+ - name :chek and install nfs client
+   yum:
+     name:nfs-utils
+     state=installed
+    tags: mount_fs_fs
+ - name : create a mountpoint for nfs
+   file:
+     path=/nfsmount
+     state=directory
+     mode=755
+     owner=root
+   tags: mount_nfs_fs
+ - name: update fstab and mount nfs share
+  mount:
+    name=/nfsmount
+    src=192.168.1.100:/nfsshare
+    fstype:nfs
+    opts=defaults,rw,bg
+    dump=0
+    passno=2
+    state=mounted
+  tags: mount_nfs_fs
+## cron/crontab managment
+
+- name: allow a user access for a user
+  lineinfile:
+    dest=/etc/cron.allow
+    regexp=demouser1
+    line=demouser1
+    state=present
+    tags: create_cron_tab

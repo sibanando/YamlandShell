@@ -1,0 +1,81 @@
+---
+#this is demo playbookon user management using Ansible
+#playbook use "user,group,authorised_keys"
+#use this playbook own your risk--siba
+
+- hosts: all
+  become_user: root
+
+# this task creates groups
+ - name : add a groups
+   group: name={{item}} state= present
+   with_items:
+      -demogrp
+      -demogrp1
+      -demogrp2
+   tags: add_new_group
+# this task adds several users on the target machine, for/standard loop used
+ - name: add several users
+   user: name={{ item }} state= present groups=demogrp password="123" shell = /bin/bash 
+with_items:
+ -siba
+ -manu
+ -elio
+
+#this task generate public keys for user
+ - name: generate ssh keys for user
+   user:
+   name={{item}}
+generate_ssh_key=yes
+ssh_key_bits=4096
+ssh_key_file=./ssh/id_rsa
+with_items:
+ - siba
+ tags: generate_ssh_keys
+# this task ti copy public keys to user account
+ -name: update authorized keys for a user
+  authorized_key:
+   user:siba
+   state:present
+   key: "{{lookup('file,'/home/siba/.ssh/id_rsa.pub')}}"
+ tags: cpoy_pub_key
+
+# this tasks is to delete the users
+ -name: delete several users
+  user:
+   name={{ item }}
+   state= absent
+  with_items:
+    -manu
+    -elio
+ tags: remove_user
+# this tasks is to delete the groups
+ -name: delete several group
+  user:
+   name={{ item }}
+   state= absent
+  with_items:
+    -demogroup1
+    -demogroup2
+ tags: remove_group
+
+# this tasks is to delete the groups
+ -name: delete several group
+  user:
+   name={{ item }}
+   state= absent
+  with_items:
+    -demogroup1
+    -demogroup2
+ tags: remove_group
+
+ansible-playbook usermangement.yml --list-tags
+
+ssh siba@192.156.12.7 -i /home/siba/.ssh/id_rsa
+ansible-playbook usermangement.yml --tags remove_user,remove_group
+
+
+
+
+
+    
