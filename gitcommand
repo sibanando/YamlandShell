@@ -1,0 +1,217 @@
+    1  lsblk
+    2  blkid /dev/sda5
+    3  ls -l /dev/sda5
+    4  apt-get install git -y
+    5  git config --global user.name "Sibananda Nayak"
+    6  git config --global user.email  "sibhanayak@hotmail.com"
+    7  git info
+    8  git --help
+    9  git config --list
+   10  git init 
+   11  git --help
+   12  git --version
+   13  apt-get install -y docker.io
+   14  apt-get update
+   15  apt-get upgrade
+   16  sudo apt-get remove docker docker-engine docker.io
+   17  sudo apt-get install     apt-transport-https     ca-certificates     curl     software-properties-common
+   18  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+   19  sudo apt-key fingerprint 0EBFCD88
+   20  sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   21     $(lsb_release -cs) \
+   22     stable"
+   23  sudo apt-get update
+   24  apt-cache madison docker-ce
+   25  docker-ce | 18.03.0~ce-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+   26  apt-cache madison docker-ce
+   27  docker-ce | 18.03.0~ce-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+   28  apt-cache madison docker-ce | 18.03.0~ce-0~ubuntu | https://download.docker.com/linux/ubuntu xenial/stable amd64 Packages
+   29  apt-get install docker-ce=18.03.1~ce-0~ubuntu
+   30  sudo docker run hello-world
+   31  ps
+   32  systemctl start docker
+   33  systemctl status docker
+   34  docker ps
+   35  docker ps -a
+   36  docker version
+   37  docker info
+   38  docker search centos7
+   39  docker pull centos7:ansible/centos7-ansible
+   40  docker pull ansible/centos7-ansible
+   41  docker images
+   42  docker run ansible/centos7-ansible /bin/ping opera.com -c -5
+   43  docker run ansible/centos7-ansible uname -a
+   44  docker run -it -c 250 -m ansible/centos7-ansible /bin/bash
+   45  docker run -it  ansible/centos7-ansible /bin/bash
+   46  docker network ls
+   47  docker ps -a
+   48  cat /etc/lsb-release 
+   49  git version
+   50  git status
+   51  ls -al
+   52  cd .git/
+   53  ls
+   54  cd ..
+   55  mkdir Project1
+   56  ls
+   57  cd Project1/
+   58  git init 
+   59  ls =al
+   60  ls -al
+   61  touch test 
+   62  echo " hi test" >> test
+   63  cat test 
+   64  echo " hi test2" >> test
+   65  cat test 
+   66  git status
+   67  git add test
+   68  git status
+   69  echo " hi test3" >> test
+   70  git status
+   71  git add *
+   72  git status
+   73  git commit -m "V-1"
+   74  git status
+   75  git diff
+   76  echo " hi test4" >> test
+   77  git diff
+   78  git config --list
+   79  echo " df -HT" >> script.sh 
+   80  chmod +x script.sh 
+   81  ./script.sh 
+   82  echo " pwd" >> script.sh 
+   83  ./script.sh 
+   84  git status
+   85  git add *
+   86  git status
+   87  git commit -m "V-2"
+   88  ./script.sh > script.log
+   89  cat script.log 
+   90  pwd
+   91  ls script.sh
+   92  ls -l script.sh
+   93  crontab -e
+   94  crontab -l
+   95  systemctl cron reload
+   96  systemctl  reload cron
+   97  systemctl  start  cron
+   98  systemctl status cron.service
+   99  cd
+  100  ls
+  101  cat script.log 
+  102  cd Project1/
+  103  ls
+  104  cat script.log 
+  105  crontab -e
+  106  systemctl  start  cron
+  107  systemctl status cron.service
+  108  cd ..
+  109  cat script.log 
+  110  crontab -e
+  111  systemctl  start  cron
+  112  systemctl status cron.service
+  113  cat script.log 
+  114  ls
+  115  cd Project1/
+  116  echo " date " >> script.sh
+  117  systemctl  restart  cron
+  118  cd ..
+  119  cat script.log 
+  120  watch script.log
+  121  cat script.log 
+  122  git --version 
+  123  git status 
+  124  cd Project1/
+  125  git status 
+  126  df -HT
+  127  lsblk 
+  128  ls
+  129  git remote add origin https://github.com/sibanando/Project1.git
+  130  git push -u origin master 
+  131  git status
+  132  git commit -m "v-3"
+  133  git add *
+  134  git commit -m "v-3"
+  135  git status
+  136  git brach --list
+  137  git branch --list
+  138  git log
+  139  init 0
+  140  docker version
+  141  system enable docker
+  142  systemctl enable docker
+  143  systemctl status docker
+  144  docker info
+  145  docker search centos
+  146  docker images
+  147  docker run ansible/centos7-ansible /bin/ping google.com 
+  148  docker ps -a
+  149  docker run -it ansible/centos7-ansible /bin/bash
+  150  init 0
+  151  docker version
+  152  git --version
+  153  ld
+  154  ll
+  155  cd Project1/
+  156  ld
+  157  ls
+  158  ls -a
+  159  git pull clone https://github.com/sibanando/siba.git
+  160  git clone https://github.com/sibanando/siba.git
+  161  ls
+  162  cd siba/
+  163  ls
+  164  ls -ls
+  165  touch a1
+  166  vi a1
+  167  git add .
+  168  git status
+  169  git config --help
+  170  git remote add origin
+  171  git remote add origin https://github.com/sibanando/siba.git
+  172  git remote add origin
+  173  git status
+  174  init 0
+  175  git --version
+  176  ping google.com
+  177  git clone https://github.com/sibanando/ansible.git
+  178  ls
+  179  cd ansible/
+  180  ls
+  181  git checkout 
+  182  mkdir removefile
+  183  git status
+  184  ls
+  185  pwd
+  186  git status
+  187  cd removefile/
+  188  touch ss
+  189  cd
+  190  cd ansible/
+  191  git status
+  192  git add removefile/
+  193  git status
+  194  git commit -m "v33"
+  195  git status
+  196  git push origin ansible
+  197  git push origin master
+  198  ls
+  199  rm removefile/
+  200  rm -rf removefile/
+  201  git pull --rebase
+  202  git stash
+  203  ls
+  204  rm -rf removefile/
+  205  ls
+  206  git pull --rebase
+  207  git stash
+  208  ll
+  209  cd removefile/
+  210  ls
+  211  cd ..
+  212  git tag -l
+  213  git tag -a "ansible-v01"
+  214  git tag -l
+  215  git push origin tag ansible-v01
+  216  git tag -l
+  217  history > gitcommand
