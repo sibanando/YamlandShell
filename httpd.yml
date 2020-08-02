@@ -7,8 +7,8 @@
   - name: Installing Latest version of Apache
     yum: pkg=httpd state=latest
   - name: Copying the demo file
-    template: 
-              src: /etc/ansible/index.html.jinja2 
+    copy: 
+              src: /etc/ansible/index.html 
               dest: /var/www/html
               owner: apache 
               group: apache
