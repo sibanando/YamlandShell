@@ -6,8 +6,8 @@
   become_method: sudo
 # define tasks
   tasks:
-  - name: httpd is uninstalled
-    yum: name=httpd state=absent
+  - name: httpd is installed
+    yum: name=httpd state=present
   - name: Copies template
     copy:
        src: /etc/ansible/index.html
@@ -15,5 +15,4 @@
        owner: apache
        group: apache
        mode: 0755
-  - name: httpd is running and 
-    service: name=httpd state=started
+ 
