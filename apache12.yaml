@@ -8,8 +8,7 @@
   - name: Install Apache
     yum: pkg=httpd state=latest
   - name: Copying the demo file
-    - name: Place the index file at project
-      copy:
+    copy:
          src: /etc/ansible/index.html
          dest: /var/www/html/
          owner: apache
