@@ -8,11 +8,12 @@
   - name: Install Apache
     yum: pkg=httpd state=latest
   - name: Copying the demo file
-    template: 
-         src: /etc/ansible/index.html 
-         dest: /var/www/html 
-         owner: apache 
-         group: apache 
+    - name: Place the index file at project
+      copy:
+         src: /etc/ansible/index.html
+         dest: /var/www/html/
+         owner: apache
+         group: apache
          mode: 0644
   - name: Enable Apache on System Boot
     service: name=httpd enabled=yes
