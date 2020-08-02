@@ -6,13 +6,21 @@
   tasks:
   - name: Installing Latest version of Apache
     yum: pkg=httpd state=latest
-  - name: Copying the demo file
-    copy: 
-              src: /etc/ansible/index.html 
-              dest: /var/www/html
-              owner: apache 
-              group: apache
-              mode: 0644
+  - name: Update sshd configuration safely, avoid locking yourself out
+    template:
+      src: /etc/ansible/index.html.j2
+      dest: /var/www/html/
+      owner: root
+      group: root
+      mode: '0777'
+      validate: /usr/sbin/sshd -t -f %s
+      #backup: yes
+ # - name: Copying the demo file
+   # copy:  #src: /etc/ansible/index.html 
+              #dest: /var/www/html
+              #owner: apache 
+              #group: apache
+              #mode: 0644
               #remote_src: yes
               #validate: /usr/sbin/visudo -cf %s
   - name: (Enable it on System Boot)
