@@ -1,6 +1,6 @@
 ---
 - hosts: all
- # remote_user: root
+  remote_user: root
   become: yes
   become_method: sudo
   tasks:
@@ -13,8 +13,8 @@
               owner: apache 
               group: apache
               mode: 0644
-              remote_src: yes
-              validate: /usr/sbin/visudo -cf %s
+              #remote_src: yes
+              #validate: /usr/sbin/visudo -cf %s
   - name: (Enable it on System Boot)
     service: name=httpd enabled=yes
     notify:
