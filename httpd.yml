@@ -2,7 +2,7 @@
 - hosts: all
   remote_user: root
   become: yes
-  become_method: su
+  become_method: sudo
   tasks:
   - name: Installing Latest version of Apache
     yum: pkg=httpd state=latest
