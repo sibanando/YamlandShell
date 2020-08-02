@@ -7,9 +7,13 @@
   - name: Installing Latest version of Apache
     yum: pkg=httpd state=latest
   - name: Copying the demo file
-    template: src=/etc/ansible/index.html.jinja2 dest=/var/www/html
-              owner=apache group=apache mode=0644
-              remote_src=true
+    template: src= /etc/ansible/index.html.jinja2 
+              dest= /var/www/html
+              owner= apache 
+              group= apache
+              mode= 0644
+              remote_src: yes
+              validate: /usr/sbin/visudo -cf %s
   - name: (Enable it on System Boot)
     service: name=httpd enabled=yes
     notify:
