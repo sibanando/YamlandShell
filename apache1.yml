@@ -8,5 +8,12 @@
   tasks:
   - name: httpd is uninstalled
     yum: name=httpd state=absent
+  - name: Copies template
+    copy:
+       src: /etc/ansible/index.html.j2
+       dest: /var/www/html
+       owner: apache
+       group: apache
+       mode: 0755
   - name: httpd is running and 
     service: name=httpd state=started
